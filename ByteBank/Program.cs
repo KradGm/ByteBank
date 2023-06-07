@@ -44,7 +44,7 @@ namespace ByteBank
                 agencyNumber = 16,
                 balance = 200
             };
-            Console.WriteLine("D S");
+            Console.WriteLine("D:Deposit S:Saque T:Transference");
             char.TryParse(Console.ReadLine(), out key);
             switch (key)
             {
@@ -55,10 +55,16 @@ namespace ByteBank
                     Console.WriteLine("Seu valor na balança é : " + account.balance);
                     break;
                 case 'D':
-                    Console.WriteLine("Qual é o valor a ser depositado?");
+                    Console.WriteLine("Qual é o valor a ser depositado: ");
                     double.TryParse(Console.ReadLine(), out amount);
                     account.Deposit(amount);
                     Console.WriteLine("Seu valor na balança é : " + account.balance);
+                    break;
+                case 'T':
+                    Console.WriteLine("Qual é o valor a ser transferido: ");
+                    double.TryParse(Console.ReadLine(), out amount);
+                    account.Transfer(amount,account2);
+                    Console.WriteLine($"O valor a ser transferido é :{amount}"  + $"e o nome do beneficiario é : {account2.holder.name}");
                     break;
 
             }
