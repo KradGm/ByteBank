@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.Remoting;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using Newtonsoft.Json;
 
 namespace ByteBank
 {
@@ -26,14 +28,16 @@ namespace ByteBank
             {
                 return;
             }
-            CurrentAccount account = new CurrentAccount(agencyNumber, accountNum, balance, holder);
             Console.WriteLine("O seu nome e o seu cpf : " + client1.name + " " + client1.cpf);
             Console.WriteLine("Qual é o numero da sua agencia?");
             int.TryParse(Console.ReadLine(), out agencyNumber);
             Console.WriteLine("Qual é o numero da sua conta?");
             accountNum = Console.ReadLine();
-            account.balance = 1000;
+            CurrentAccount account = new CurrentAccount(agencyNumber, accountNum, balance, holder);
+
             Console.WriteLine("Você tem esse saldo: " + balance);
+            account.balance = 1000;
+
 
             Client client2 = new Client("Teste", "Teste3");
 
@@ -68,6 +72,13 @@ namespace ByteBank
                     break;
 
             }
+
+            string json = JsonConvert.SerializeObject(account);
+            File.WriteAllText("account.json", json);
+
+            string jsonSalvo = File.ReadAllText("account.json");
+            CurrentAccount accountSalva = JsonConvert.DeserializeObject<CurrentAccount>(jsonSalvo);
+            Console.WriteLine(accountSalva);
 
             Console.WriteLine("Tecle enter para sair...");
             Console.ReadLine();

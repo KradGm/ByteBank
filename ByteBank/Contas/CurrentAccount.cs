@@ -10,14 +10,17 @@ namespace ByteBank
 {
     public class CurrentAccount
 {
-        public int agencyNumber;
-        public string account;
-        public double balance ;
-        public Client holder;
+        public int agencyNumber { get; set; }
+        public string account { get; set; }
+        public double balance { get; set; }
+        public Client holder { get; set; }
 
         public CurrentAccount(int agency, string account, double balance, Client holder)
         {
-
+        this.agencyNumber = agency;
+        this.account = account; 
+        this.balance = balance;
+        this.holder = holder;
         }
 
         public void Deposit(double amount)
