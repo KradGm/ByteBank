@@ -8,8 +8,8 @@ namespace ByteBank
 {
     public class Client
     {
-        public string name;
-        public string cpf;
+        public string name { get; set; }
+        public string cpf   { get; set; }
         public string profession;
         public Client(string name,string cpf) 
         {
