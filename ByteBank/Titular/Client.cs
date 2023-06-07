@@ -11,5 +11,17 @@ namespace ByteBank
         public string name;
         public string cpf;
         public string profession;
+        public Client(string name,string cpf) 
+        {
+            this.name = name;
+            this.cpf = cpf;
+        }
+        public Client(string name, string cpf, string profession)
+        {
+            this.name = name;
+            this.cpf = cpf;
+            this.profession = profession;
+        }
+
     }
 }

@@ -12,18 +12,14 @@ namespace ByteBank
 {
         public int agencyNumber;
         public string account;
-        public double balance = 100;
-
+        public double balance ;
         public Client holder;
-        /*
-        [Criar classe pois tem muitas responsabilidades]
-        public string holderName;
-        public string holderCPF;
-        public string holderProfession;
-        */
 
+        public CurrentAccount(int agency, string account, double balance, Client holder)
+        {
 
-        //method
+        }
+
         public void Deposit(double amount)
         {
             this.balance += amount;
@@ -31,16 +27,14 @@ namespace ByteBank
         /// <summary> Esse codigo serve para sacar um certo valor </summary>
         /// <param name="amount"> Valor a ser medido </param>
         /// <returns> Nada </returns>
-        public bool Withdraw(double amount)
+        public void Withdraw(double amount)
         {
             if(amount <= balance)
             {
                 this.balance -= amount;
-                return true;
             }
             else
             {
-                return false;
             }
 
         }
